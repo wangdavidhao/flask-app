@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PDF Information</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>{{ pdf_title }}</h1>
+      <table>
+        <tr>
+          <th>ID</th>
+          <td>{{ pdf_id }}</td>
+        </tr>
+        <tr>
+          <th>Size</th>
+          <td>{{ pdf_size }}</td>
+        </tr>
+        <tr>
+          <th>Text</th>
+          <td>{{ pdf_text }}</td>
+        </tr>
+        <tr>
+          <th>Metadata</th>
+          <td>{{ pdf_meta }}</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

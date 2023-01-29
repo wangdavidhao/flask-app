@@ -88,9 +88,7 @@ def post_pdf():
     for page in reader.pages:
         text += page.extract_text()
 
-    print(reader.metadata)
     new_data = Data(size=size, text=text[:10], meta=reader.metadata)
-    print(new_data)
     db.session.add(new_data)
     db.session.commit()
 
