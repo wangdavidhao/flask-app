@@ -8,6 +8,7 @@ from .db import db
 
 main = Blueprint("main", __name__)
 
+
 @main.route("/", methods=["GET"])
 def get_index():
     """Get index page

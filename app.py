@@ -7,6 +7,7 @@ from flasgger import Swagger
 from .db import db
 from .routes import main
 
+
 def create_app():
     """
     Init application with:
@@ -18,13 +19,13 @@ def create_app():
     Swagger(app)
     CORS(app)
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////tmp/pdf-app" #Database configuration URI
+    app.config[
+        "SQLALCHEMY_DATABASE_URI"
+    ] = "sqlite:////tmp/pdf-app"  # Database configuration URI
     db.init_app(app)
     app.register_blueprint(main)
 
     with app.app_context():
         db.create_all()
-        
+
     return app
-
-
