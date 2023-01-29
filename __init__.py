@@ -18,9 +18,13 @@ def create_app():
     Swagger(app)
     CORS(app)
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////tmp/extract-pdf-test" #Database configuration URI
-
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////tmp/pdf-app" #Database configuration URI
     db.init_app(app)
 
+    with app.app_context():
+        db.create_all()
+        
     app.register_blueprint(main)
     return app
+
+
