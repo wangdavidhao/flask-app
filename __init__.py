@@ -1,30 +1,6 @@
-"""
-Init module
-"""
-from flask import Flask
-from flask_cors import CORS
-from flasgger import Swagger
-from .db import db
-from .routes import main
+from .app import create_app
 
-def create_app():
-    """
-    Init application with:
-    Flask
-    CORS
-    Swagger
-    """
-    app = Flask(__name__)
-    Swagger(app)
-    CORS(app)
+app = create_app()
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////tmp/pdf-app" #Database configuration URI
-    db.init_app(app)
-
-    with app.app_context():
-        db.create_all()
-        
-    app.register_blueprint(main)
-    return app
-
-
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", debug=True)
