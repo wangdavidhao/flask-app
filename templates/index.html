@@ -10,6 +10,15 @@
   <body>
     <div class="container">
       <h1>PDF Storage & text extraction</h1>
+      <form
+        action="http://127.0.0.1:5000/documents"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <input type="file" name="file" accept="application/pdf" />
+        <br />
+        <button type="submit">Upload</button>
+      </form>
     </div>
   </body>
 </html>
