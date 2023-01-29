@@ -8,7 +8,7 @@ from .db import db
 from .routes import main
 
 
-def create_app():
+def create_app(db_uri):
     """
     Init application with:
     Flask
@@ -21,7 +21,7 @@ def create_app():
 
     app.config[
         "SQLALCHEMY_DATABASE_URI"
-    ] = "sqlite:////tmp/pdf-app"  # Database configuration URI
+    ] = db_uri  # Database configuration URI
     db.init_app(app)
     app.register_blueprint(main)
 
