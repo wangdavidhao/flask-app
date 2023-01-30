@@ -1,4 +1,5 @@
 import pytest
+
 from project.app import create_app, db
 
 

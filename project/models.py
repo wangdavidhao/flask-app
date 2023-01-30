@@ -3,6 +3,7 @@ Models module
 """
 from sqlalchemy.dialects.postgresql import JSON
 from sqlalchemy.ext.mutable import MutableDict
+
 from .db import db
 
 

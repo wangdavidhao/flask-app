@@ -1,9 +1,10 @@
 """
 Init module
 """
+from flasgger import Swagger
 from flask import Flask
 from flask_cors import CORS
-from flasgger import Swagger
+
 from .db import db
 from .routes import main
 

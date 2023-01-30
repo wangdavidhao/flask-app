@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PDF Information</title>
+    <title>PDF APP</title>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='styles.css') }}"
@@ -14,6 +14,7 @@
         action="http://127.0.0.1:5000/documents"
         method="post"
         enctype="multipart/form-data"
+        class="pdf-form"
       >
         <input
           type="file"
@@ -24,6 +25,7 @@
         <br />
         <button type="submit" class="upload-button">Upload</button>
       </form>
+      <img src="../static/icon_pdf.png" width="30%" />
     </div>
   </body>
 </html>

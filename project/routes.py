@@ -1,21 +1,22 @@
 """
 Routes module
 """
-from flask import request, Blueprint, render_template,abort
+from flask import Blueprint, render_template, request
 from PyPDF2 import PdfReader
-from .models import Data
+
 from .db import db
+from .models import Data
 
 main = Blueprint("main", __name__)
 
 
 @main.route("/", methods=["GET"])
 def get_index():
-    """Get index page
+    """Get index page for uploading PDF
     ---
     responses:
       200:
-        description: Index page
+        description: Returns index page
     """
     return render_template("index.html"), 200
 
@@ -29,7 +30,7 @@ def get_pdf_info_by_id(pdf_id):
         type: string
     responses:
       200:
-        description: Information about PDF inclunding author, size and its text
+        description: Returns information about PDF inclunding metadata, size and its text
     """
 
     if not pdf_id.isdigit():
@@ -61,7 +62,7 @@ def get_text_by_id(pdf_id):
         type: string
     responses:
       200:
-        description: PDF text
+        description: Returns PDF text
     """
 
     if not pdf_id.isdigit():
@@ -69,7 +70,7 @@ def get_text_by_id(pdf_id):
 
     try:
         data = db.session.query(Data).filter(Data.id == pdf_id).first()
-        return data.text, 200
+        return render_template("pdf_text.html", text=data.text), 200
 
     except:
         return render_template(
@@ -86,9 +87,10 @@ def post_pdf():
         in: path
         type: file
         required: true
+        content_type: ['application/pdf']
     responses:
       200:
-        description: PDF ID string
+        description: Returns PDF string ID
     """
     pdf_file = request.files["file"]  # Get file data
 
