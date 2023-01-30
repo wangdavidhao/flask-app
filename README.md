@@ -1,5 +1,7 @@
 # PDF Storage & Text extraction
 
+![](index.png)
+
 ## Project structure
 
     .
