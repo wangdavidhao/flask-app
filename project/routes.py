@@ -38,13 +38,13 @@ def get_pdf_info_by_id(pdf_id):
 
     try:
         data = db.session.query(Data).filter(Data.id == pdf_id).first()
+        meta = data.meta.items()
         return render_template(
             "pdf_info.html",
-            pdf_title=data.metadata,
             pdf_id=data.id,
             pdf_size=data.size,
             pdf_text=data.text,
-            pdf_meta=data.meta,
+            pdf_meta=meta,
         )
 
     except:
@@ -112,7 +112,7 @@ def post_pdf():
         text += page.extract_text()
 
     new_data = Data(
-        size=size, text=text[:10], meta=reader.metadata
+        size=size, text=text, meta=reader.metadata
     )  # Creation of new data
     db.session.add(new_data)
     db.session.commit()

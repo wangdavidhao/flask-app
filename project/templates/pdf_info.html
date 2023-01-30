@@ -10,7 +10,6 @@
   <body>
     <div class="container">
       <h1>PDF Information</h1>
-      <h1>{{ pdf_title }}</h1>
       <table>
         <tr>
           <th>ID</th>
@@ -24,10 +23,13 @@
           <th>Text</th>
           <td>{{ pdf_text }}</td>
         </tr>
+        {% for meta in pdf_meta %}
         <tr>
-          <th>Metadata</th>
-          <td>{{ pdf_meta }}</td>
+          <th>{{ meta[0] }}</th>
+          <td>{{ meta[1] }}</td>
         </tr>
+
+        {% endfor %}
       </table>
     </div>
   </body>
