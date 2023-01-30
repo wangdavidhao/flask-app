@@ -8,7 +8,6 @@ from .db import db
 
 main = Blueprint("main", __name__)
 
-
 @main.route("/", methods=["GET"])
 def get_index():
     """Get index page
@@ -31,13 +30,10 @@ def get_pdf_info_by_id(pdf_id):
         description: Information about PDF inclunding author, size and its text
     """
 
-    data = db.session.query(Data).filter(Data.id == pdf_id).first()
-
-    if not data:
+    
+    try:
+        data = db.session.query(Data).filter(Data.id == pdf_id).first()
         return render_template(
-            "error.html", error="Error while trying to fetch a PDF info with its ID"
-        )
-    return render_template(
         "pdf_info.html",
         pdf_title=data.metadata,
         pdf_id=data.id,
@@ -45,6 +41,11 @@ def get_pdf_info_by_id(pdf_id):
         pdf_text=data.text,
         pdf_meta=data.meta,
     )
+
+    except:
+        return render_template(
+            "error.html", error="Error while trying to fetch a PDF info with its ID"
+        )
 
 
 @main.route("/text/<int:pdf_id>", methods=["GET"])

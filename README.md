@@ -4,6 +4,7 @@
 
     .
     ├── static                  #Basic styles
+    │   ├── error.css
     │   └── styles.css
     │
     └── templates               #HTML templates
@@ -13,12 +14,20 @@
     │   └── pdf_text.html
     │
     └── tests                   #Tests
+    │   ├── conftest.py
+    │   └── test_app.py
     │
     ├── __init__.py             #App entrypoint & modules
     ├── app.py
     ├── db.py
     ├── models.py
     └── routes.py
+
+## API Contract
+
+Available at `http://localhost:5000/apidocs`
+
+![](swagger.png)
 
 ## Requirements
 
@@ -38,6 +47,14 @@ $ pip install -r requirements.txt
 $ export FLASK_APP=__init__ #use SET for Windows machine
 $ flask run
 ```
+
+## Stack
+
+- [Python](https://www.python.org/)
+- [Flask](https://flask.palletsprojects.com/en/2.2.x/)
+- [SQLite](https://sqlite.org/index.html)
+- [Docker](https://www.docker.com/)
+- [Pytest](https://docs.pytest.org/en/7.2.x/)
 
 ## Author
 

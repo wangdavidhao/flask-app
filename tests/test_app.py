@@ -19,7 +19,7 @@ def test_post_new_pdf(client, app):
     """
     data = {}
     data["file"] = open("file.pdf", "rb")
-    response = client.post("/documents", data=data)
+    response = client.post("/documents", data=data) 
     return_response = response.data.decode()
     assert return_response == "1"  # Assert response return with the PDF id
     assert response.status_code == 200

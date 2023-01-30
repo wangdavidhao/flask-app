@@ -2,9 +2,15 @@
 <html>
   <head>
     <title>Error</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='error.css') }}"
+    />
   </head>
   <body>
-    <h1>Error: {{ error }}</h1>
-    <p>Something went wrong. Please try again later.</p>
+    <div class="container">
+      <h1>Error: {{ error }}</h1>
+      <p>Something went wrong. Please try again later.</p>
+    </div>
   </body>
 </html>

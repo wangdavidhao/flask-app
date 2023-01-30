@@ -10,10 +10,13 @@ from .routes import main
 
 def create_app(db_uri):
     """
-    Init application with:
-    Flask
-    CORS
-    Swagger
+    Init application with: Flask, CORS, Swagger
+
+    Args:
+        db_uri (string): The database URI
+    
+    Returns:
+        Flask app
     """
     app = Flask(__name__)
     Swagger(app)
