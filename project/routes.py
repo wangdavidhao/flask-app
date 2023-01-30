@@ -38,7 +38,7 @@ def get_pdf_info_by_id(pdf_id):
 
     try:
         data = db.session.query(Data).filter(Data.id == pdf_id).first()
-        meta = data.meta.items()
+        meta = data.meta.items()  # Extract key and values of metadata json
         return render_template(
             "pdf_info.html",
             pdf_id=data.id,
@@ -111,10 +111,13 @@ def post_pdf():
     for page in reader.pages:
         text += page.extract_text()
 
-    new_data = Data(
-        size=size, text=text, meta=reader.metadata
-    )  # Creation of new data
+    new_data = Data(size=size, text=text, meta=reader.metadata)  # Creation of new data
     db.session.add(new_data)
     db.session.commit()
 
-    return str(new_data.id)
+    try:
+        return_id = new_data.id
+        return str(return_id)
+    except:
+        return "Error returning new PDF id"
+

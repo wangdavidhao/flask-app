@@ -37,6 +37,8 @@ Available at `http://localhost:5000/apidocs`
 
 ## Installation & Running
 
+After unzipping the folder or cloning the repository
+
 ```bash
 #With Docker
 $ docker build -t flask-app .
