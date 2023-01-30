@@ -19,10 +19,7 @@
           <th>Size</th>
           <td>{{ pdf_size }}</td>
         </tr>
-        <tr>
-          <th>Text</th>
-          <td>{{ pdf_text }}</td>
-        </tr>
+
         {% for meta in pdf_meta %}
         <tr>
           <th>{{ meta[0] }}</th>
@@ -30,6 +27,11 @@
         </tr>
 
         {% endfor %}
+
+        <tr>
+          <th>Text</th>
+          <td>{{ pdf_text }}</td>
+        </tr>
       </table>
     </div>
   </body>
