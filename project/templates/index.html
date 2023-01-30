@@ -16,16 +16,32 @@
         enctype="multipart/form-data"
         class="pdf-form"
       >
-        <input
-          type="file"
-          name="file"
-          accept="application/pdf"
-          class="inputfile"
-        />
+        <label class="custom-file-upload">
+          <input
+            type="file"
+            name="file"
+            accept="application/pdf"
+            class="inputfile"
+          />
+          Choose your PDF file
+        </label>
+
         <br />
         <button type="submit" class="upload-button">Upload</button>
       </form>
       <img src="../static/icon_pdf.png" width="30%" />
+      <span
+        >Visit API Documentation :
+        <a href="http://127.0.0.1:5000/apidocs"
+          >http://127.0.0.1:5000/apidocs</a
+        ></span
+      >
+      <span
+        >Visit Code Documentation :
+        <a href="http://127.0.0.1:5000/apidocs"
+          >http://127.0.0.1:5000/apidocs</a
+        ></span
+      >
     </div>
   </body>
 </html>
