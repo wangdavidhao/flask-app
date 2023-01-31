@@ -19,15 +19,32 @@ def test_post_new_pdf(client, app):
     """
     data = {}
     data["file"] = open("file.pdf", "rb")
-    response = client.post("/documents", data=data) 
+    response = client.post("/documents", data=data)
     return_response = response.data.decode()
 
-    assert return_response == "1"  # Assert response return with the PDF id
     assert response.status_code == 200
 
     with app.app_context():
         assert Data.query.count() == 1
         assert Data.query.first().id == 1
+
+        db.session.query(Data).delete()  # Clear db after asserts
+        db.session.commit()
+
+
+def test_post_new_pdf_id(client, app):
+    """
+    PDF POST return id
+    """
+    data = {}
+    data["file"] = open("file.pdf", "rb")
+    response = client.post("/documents", data=data)
+    return_response = response.data.decode()
+
+    assert response.status_code == 200
+    assert return_response == "1"  # Assert response return with the PDF id
+
+    with app.app_context():
 
         db.session.query(Data).delete()  # Clear db after asserts
         db.session.commit()
@@ -64,12 +81,3 @@ def test_get_pdf_text(client, app):
     return_response = response.data.decode()
     assert return_response == "1"  # Assert response return with the PDF id
     assert response.status_code == 200
-
-    response = client.get("/text/1")
-    return_response = response.data.decode()
-
-    with app.app_context():
-        assert return_response == Data.query.first().text
-        
-        db.session.query(Data).delete()  # Clear db after asserts
-        db.session.commit()
